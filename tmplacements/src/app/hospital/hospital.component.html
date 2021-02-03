@@ -1,0 +1,54 @@
+<div padding="10%" margin="10%">
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Hospital Id</label>
+          <input [disabled] ="isEdited" [(ngModel)] = "hospital.id" type="text" class="form-control" name="hid" aria-describedby="emailHelp" placeholder="ID">
+         </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Hospital Name</label>
+          <input  [(ngModel)]="hospital.name" type="text" class="form-control" name="hname" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Hospital Address</label>
+            <input [(ngModel)]="hospital.city" type="text" class="form-control" name="haddress" placeholder="Address">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1">Hospital Rating</label>
+              <input  [(ngModel)] = "hospital.rating" type="text" class="form-control" name="hrating" placeholder="Rating">
+            </div>    
+        <button [disabled] = "disable" type="button" type="submit" class="btn btn-primary" (click)="addHospital()">Submit</button>
+        <button [disabled] = "disable" type="button" type="submit" class="btn btn-primary" (click)="getHospital()">Get</button>
+      </form>
+</div>
+
+<!-- Hospital Id     :   <input [disabled] ="isEdited" [(ngModel)] = "hospital.id" type="text" /> <br>
+Hospital Name   :   <input [(ngModel)] = "hospital.name" type="text" /> <br>
+Hospital City   :   <input [(ngModel)] = "hospital.city" type="text" /> <br>
+Hospital Rating :   <input [(ngModel)] = "hospital.rating" type="text" /> <br>
+<input [disabled] = "disable" type="button" value="submit" (click)="addHospital()"/>
+<input [disabled] = "disable" type="button" value="Get" (click)="getHospital()"/> -->
+
+<br><br><br>
+<div align="center">
+<table class="table" width="50px">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Hospital Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Rating</th>
+        <th scope="col" colspan="2"  >Action</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of hospitals">
+        <th scope="row">{{r.id}}</th>
+        <td>{{r.name}}</td>
+        <td>{{r.city}}</td>
+        <td>{{r.rating}}</td>
+        <td><input type="button" value="Edit" (click)="editHospital(r.id)"/></td>
+        <td><input type="button" value="Delete" (click) = "deleteHospital(r.id)"/></td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
